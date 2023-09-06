@@ -1,31 +1,17 @@
 import pyinputplus as pyip
 
-from sandwiches_menu import ingredients_price, optional_ingredients
+from sandwiches_menu import ingredients_menu, optional_ingredients
+from select_ingredients import select_ingredients
 
 
-ordered_ingredients = []
-
-# Select ingredients
-for ingredient_type in ingredients_price.keys():
-    # Check that customer wants to add an optional ingredient
-    if ingredient_type in optional_ingredients:
-        add_ingredient = True if pyip.inputYesNo(prompt=f'Do you want {ingredient_type}?\n') == 'yes' else False
-        if not add_ingredient:
-            continue
-    # Select type of ingredient
-    ingredient = pyip.inputMenu(
-        list(ingredients_price[ingredient_type].keys()),
-        prompt=f'What type of {ingredient_type} would you like ?\n',
-        blank=True
-    )
-    ordered_ingredients.append(ingredient)  # Add selected type of ingredient to the sandwiches
+ordered_ingredients = select_ingredients(ingredients_menu, optional_ingredients)  # ingredients selected by the user
 
 # Calculation of the cost of one sandwich
 one_sandwich_price = 0
-for ingredient_type in ingredients_price.keys():
-    for ingredient in ingredients_price[ingredient_type].keys():
+for ingredient_type in ingredients_menu.keys():
+    for ingredient in ingredients_menu[ingredient_type].keys():
         if ingredient in ordered_ingredients:
-            one_sandwich_price += ingredients_price[ingredient_type][ingredient]
+            one_sandwich_price += ingredients_menu[ingredient_type][ingredient]
 
 
 amount_of_sandwiches = pyip.inputInt(prompt='How many sandwiches do you want?\n')

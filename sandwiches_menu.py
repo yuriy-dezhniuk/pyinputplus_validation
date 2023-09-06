@@ -7,7 +7,7 @@
 #     ingredient_type1: price,
 #     ingredient_type2: price
 # },
-ingredients_price = {
+ingredients_menu = {
     'Bread': {
         'White': 1,
         'Brown': 2,
