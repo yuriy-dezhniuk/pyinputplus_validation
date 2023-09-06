@@ -5,7 +5,7 @@ from select_ingredients import select_ingredients
 from sandwich_cost_calculation import sandwich_cost_calculation
 
 
-ordered_ingredients = select_ingredients(ingredients_menu, optional_ingredients)  # ingredients selected by the user
+ordered_ingredients = select_ingredients(ingredients_menu, optional_ingredients)  # Ingredients selected by the user
 
 one_sandwich_price = sandwich_cost_calculation(ingredients_menu, ordered_ingredients)  # Cost of one sandwich
 
